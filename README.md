@@ -4,8 +4,11 @@ Read, search, and explore *The Smaller Infinity* with your own Claude.
 
 ## Install
 
-```bash
-claude plugin add https://github.com/jeremedia/smaller-infinity-plugin
+In Claude Code:
+
+```
+/plugin marketplace add jeremedia/smaller-infinity-plugin
+/plugin install smaller-infinity@smaller-infinity
 ```
 
 ## What You Get

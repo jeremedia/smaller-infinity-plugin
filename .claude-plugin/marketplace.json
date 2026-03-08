@@ -1,0 +1,18 @@
+{
+  "name": "smaller-infinity",
+  "description": "The Smaller Infinity — read the book with your own Claude",
+  "owner": {
+    "name": "Jeremy Roush"
+  },
+  "plugins": [
+    {
+      "name": "smaller-infinity",
+      "description": "Read 'The Smaller Infinity' — a book about what happens when language learns to speak back.",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "Jeremy Roush"
+      }
+    }
+  ]
+}
