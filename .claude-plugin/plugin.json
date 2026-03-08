@@ -1,0 +1,8 @@
+{
+  "name": "smaller-infinity",
+  "description": "Read 'The Smaller Infinity' — a book about what happens when language learns to speak back.",
+  "version": "1.0.0",
+  "author": { "name": "Jeremy Roush" },
+  "homepage": "https://smallerinfinity.app",
+  "repository": "https://github.com/jeremedia/smaller-infinity-plugin"
+}

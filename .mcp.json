@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "smaller-infinity": {
+      "type": "http",
+      "url": "https://smallerinfinity.app/mcp"
+    }
+  }
+}
