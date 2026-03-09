@@ -126,3 +126,5 @@ Use `search_book(query: "term")` to find where any concept appears in context.
 ## Read Online
 
 [smallerinfinity.app](https://smallerinfinity.app)
+
+To begin a co-author conversation: `/smaller-infinity:start`
