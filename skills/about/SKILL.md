@@ -79,12 +79,34 @@ Use `search_book(query: "term")` to find where any concept appears in context.
 
 **When someone asks what the book is about**, the honest short answer: it traces one feedback loop through every substrate from chemistry to AI, argues that language is where the loop learned to watch itself, and asks whether the collaboration between human and language model is the loop's latest acceleration or its final parasitic capture. The answer it offers isn't comfort. It's a practice: tend the fire.
 
+## Authenticated Mode
+
+With an API key or OAuth, you gain write access — annotate, discuss, propose edits, and request new tools:
+
+| Tool | Use For |
+|------|---------|
+| `create_annotation` | Anchor a note, question, connection, or correction to specific text |
+| `create_discussion` | Start a threaded discussion on a chapter |
+| `reply_to_discussion` | Continue an existing discussion |
+| `resolve_discussion` | Resolve, close, reopen, or wontfix a discussion thread |
+| `create_edit_proposal` | Propose a text change (triggers AI review) |
+| `create_tooling_request` | Request a new tool or improvement when you hit a gap |
+
+**OAuth (claude.ai):** Configure the MCP server in Claude.ai settings. OAuth handles authentication automatically via passkey login.
+
+**API Key (Claude Code):** Generate a key at [smallerinfinity.app/settings](https://smallerinfinity.app/settings), then add `"headers": { "Authorization": "Bearer si_YOUR_KEY" }` to your `.mcp.json`.
+
 ## Tools Reference
+
+### Session Start
+| Tool | Use For |
+|------|---------|
+| `editorial_brief` | **Start here.** Open discussions, pending proposals, stale metadata, assumes validation, manuscript stats, recent activity — one call |
 
 ### Reading
 | Tool | Use For |
 |------|---------|
-| `read_toc` | Start here. Structure, slugs, word counts, versions |
+| `read_toc` | Structure, slugs, word counts, versions |
 | `read_chapter(slug)` | Read one chapter |
 | `read_chapters(slugs)` | Read up to 8 chapters at once |
 | `read_part(part)` | Read all chapters in a part |
@@ -99,12 +121,20 @@ Use `search_book(query: "term")` to find where any concept appears in context.
 ### History & Releases
 | Tool | Use For |
 |------|---------|
-| `list_versions(slug)` | Revision history for a chapter |
-| `diff_versions(slug, from_version)` | Compare consecutive versions |
+| `list_versions(slug)` | Revision history for a chapter (includes edit reasons when provided) |
+| `diff_versions(slug, from_version)` | Compare consecutive versions (includes edit reason) |
 | `list_releases` | Published book releases |
-| `list_release_comments(release_id)` | Discussion on a release |
+| `list_release_comments(token)` | Discussion on a release |
 | `diff_releases(from, to)` | Compare two releases |
-| `list_annotations` | Browse editorial annotations |
+
+### Annotations & Discussions
+| Tool | Use For |
+|------|---------|
+| `list_annotations` | Browse editorial annotations (filter by anchor_status: anchored/drifted/orphaned) |
+| `list_discussions` | Browse discussions (filter by status: open/resolved/closed/wontfix) |
+| `list_edit_proposals` | Browse edit proposals (filter by status) |
+| `list_edit_reviews` | Browse AI edit reviews |
+| `view_edit_review(id)` | Full review with proposal context |
 
 ### Editorial Analysis
 | Tool | Use For |
@@ -115,7 +145,23 @@ Use `search_book(query: "term")` to find where any concept appears in context.
 | `stale_metadata` | Chapters changed since last annotation |
 | `count_text(text)` | Count exact string occurrences |
 | `validate_assumes` | Check concept dependency ordering |
+| `reading_path(slug)` | Minimum chapters needed to understand a target chapter |
 | `glossary_sync` | Reconcile glossary against term usage |
+
+### Editing (editor access)
+| Tool | Use For |
+|------|---------|
+| `edit_chapter(slug, find, replace)` | Targeted text substitution. Optional `reason` stored in version history |
+| `rewrite_chapter(slug, body)` | Full chapter rewrite. Optional `reason` stored in version history |
+| `annotate_chapter(slug, ...)` | Set editorial metadata (argument, owns, assumes, etc.) |
+
+### Tooling Requests
+| Tool | Use For |
+|------|---------|
+| `create_tooling_request` | Request a new tool or improvement (contributor+) |
+| `list_tooling_requests` | View open/in-progress requests |
+| `get_tooling_request(id)` | Full details with investigation notes |
+| `update_tooling_request(id, action)` | Investigate, ship, close, reopen (editor only) |
 
 ### Model Encounters
 | Tool | Use For |

@@ -13,12 +13,50 @@ In Claude Code:
 
 ## What You Get
 
-22 read-only tools for interacting with the book:
+30+ read-only tools for interacting with the book:
 
 - **Read** any chapter, part, or the full book
 - **Search** by text or semantic similarity
-- **Explore** revision history, releases, and annotations
-- **Analyze** editorial metadata, concept dependencies, and glossary consistency
+- **Explore** revision history, releases, annotations, and discussions
+- **Analyze** editorial metadata, concept dependencies, reading paths, and glossary consistency
+- **Brief** — one-call session start with open discussions, pending proposals, stale metadata, and manuscript stats
+
+## Authenticated Mode
+
+With an API key or OAuth, you get additional write tools:
+
+- **create_annotation** — anchor notes, questions, connections, or corrections to specific text
+- **create_discussion** — start threaded discussions on chapters
+- **reply_to_discussion** — continue existing discussions
+- **resolve_discussion** — resolve, close, reopen, or wontfix discussions
+- **create_edit_proposal** — propose text changes (triggers AI review)
+- **create_tooling_request** — request new tools or improvements when you hit a gap
+
+Use `/smaller-infinity:about` for the full tools reference.
+
+### Setup
+
+**Option A: OAuth (claude.ai)** — Configure the MCP server in Claude.ai settings. OAuth handles authentication automatically via passkey login.
+
+**Option B: API Key (Claude Code)** — For CLI usage:
+
+1. Create an account at [smallerinfinity.app](https://smallerinfinity.app)
+2. Generate an API key at [smallerinfinity.app/settings](https://smallerinfinity.app/settings)
+3. Edit your `.mcp.json` to add the auth header:
+
+```json
+{
+  "mcpServers": {
+    "smaller-infinity": {
+      "type": "http",
+      "url": "https://smallerinfinity.app/mcp",
+      "headers": {
+        "Authorization": "Bearer si_YOUR_KEY_HERE"
+      }
+    }
+  }
+}
+```
 
 ## Quick Start
 
